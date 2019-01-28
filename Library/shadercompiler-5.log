@@ -1,0 +1,17 @@
+Base path: C:/Program Files (x86)/Unity/Editor/Data
+Pipe name: \\.\pipe\UnityShaderCompiler-5-1556
+Cmd: getPlatforms
+Cmd: compileSnippet
+  api=0 type=0 insize=5424 outsize=792 kw=DIRECTIONAL LIGHTMAP_ON DIRLIGHTMAP_OFF ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=5424 outsize=346 kw=DIRECTIONAL LIGHTMAP_ON DIRLIGHTMAP_OFF ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=2693 outsize=405 kw=POINT ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=2693 outsize=857 kw=POINT_COOKIE ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=2693 outsize=945 kw=POINT ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=2693 outsize=1022 kw=POINT_COOKIE ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=2693 outsize=2379 kw=DIRECTIONAL_COOKIE ok=1
