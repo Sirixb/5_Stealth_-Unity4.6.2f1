@@ -11,7 +11,8 @@ public class CameraMovement : MonoBehaviour
 	private float relCameraPosMag;      // The distance of the camera from the player.//la distancia de la camara del jugador.
 	private Vector3 newPos;             // The position the camera is trying to reach.//La posicion que la camara esta tratando de alcanzar.
 	
-	
+	public float zoomAdicional=2f; //6.089293 posicion camara en Y
+
 	void Awake ()
 	{
 		// Setting up the reference.
@@ -20,19 +21,24 @@ public class CameraMovement : MonoBehaviour
 		// Setting the relative position as the initial relative position of the camera in the scene.
 		//Configuracion de la posicion relativa como la posicion relativa inicial de la camara en la escena.
 		relCameraPos = transform.position - player.position;
-		relCameraPosMag = relCameraPos.magnitude - 0.5f;
+		relCameraPosMag = relCameraPos.magnitude - 0.5f;//reducimos porque la posicion apunta a sus pies, asi que cuando emitimos rayo para ver si nada lo esta tapando podria golpear el suelo y no queremos eso.
 	}
 	
 	
 	void FixedUpdate ()
 	{
+		//Codigo extra para mejorar la sugerencia de mi jugador
+		bool presCam = Input.GetKey(KeyCode.C);
+		Vector3 zoom = presCam ? new Vector3(0, zoomAdicional,0):Vector3.zero;
+
+		//transform.position = new Vector3(transform.position.x, Mathf.Clamp (transform.position.y, 6.089293f, transform.position.y + zoomAdicional),transform.position.z);
 		// The standard position of the camera is the relative position of the camera from the player.
 		// La posicion estandar de la camara es la posicion relativa de la camara del jugador.
-		Vector3 standardPos = player.position + relCameraPos;
+		Vector3 standardPos = player.position + relCameraPos+ zoom ;//+ zoom
 		
 		// The abovePos is directly above the player at the same distance as the standard position.
 		//La abovePos es directamente arriba del jugador en la misma distancia como la posicion estandar.
-		Vector3 abovePos = player.position + Vector3.up * relCameraPosMag;
+		Vector3 abovePos = player.position + Vector3.up * relCameraPosMag + zoom;//+ zoom
 		
 		// An array of 5 points to check if the camera can see the player.
 		//Un Array de 5 puntos para verificar si la camara puede ver el jugador.
@@ -60,6 +66,7 @@ public class CameraMovement : MonoBehaviour
 				break;
 		}
 		
+
 		// Lerp the camera's position between it's current position and it's new position.
 		//Lerp(varie) la posicion de la camara entre la posicion actual y la nueva posicion.
 		transform.position = Vector3.Lerp(transform.position, newPos, smooth * Time.deltaTime);

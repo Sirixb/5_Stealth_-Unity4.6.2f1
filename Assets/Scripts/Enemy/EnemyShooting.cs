@@ -91,7 +91,6 @@ public class EnemyShooting : MonoBehaviour
 		
 		// The damage is the scaled damage, scaled by the fractional distance, plus the minimum damage.
 		float damage = scaledDamage * fractionalDistance + minimumDamage;
-		//float damage = 0f;//(codigo de pruebas)
 
 		// The player takes damage.
 		playerHealth.TakeDamage(damage);

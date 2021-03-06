@@ -58,7 +58,7 @@ public class LastPlayerSighting : MonoBehaviour
 	void SwitchAlarms ()//cambio de alarma, sub de update
 	{
 		// Set the alarm light to be on or off.//Establezca la luz de alarma para estar en on o en off.
-		alarm.alarmOn = position != resetPosition;//da como resultado true o false para el script AlarmLight.
+		alarm.alarmOn = position != resetPosition;//da como resultado true o false para el update del script AlarmLight.
 		
 		// Create a new intensity.//Cree una nueva intensidad
 		float newIntensity;

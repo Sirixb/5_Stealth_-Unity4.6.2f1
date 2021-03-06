@@ -63,9 +63,10 @@ public class DoorAnimation : MonoBehaviour
 	void OnTriggerExit (Collider other)
 	{
 		// If the leaving gameobject is the player or an enemy and the collider is a capsule collider...
-		if(other.gameObject == player || (other.gameObject.tag == Tags.enemy && other is CapsuleCollider))
+		if (other.gameObject == player || (other.gameObject.tag == Tags.enemy && other is CapsuleCollider))
+		//if (count > 0)--count;
 			// decrease the count of triggering objects.
-			count = Mathf.Max(0, count-1);
+			count = Mathf.Max(0, count-1);//devuelve el valor mayor de las dos comparaciones
 	}
 	
 	

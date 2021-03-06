@@ -7,7 +7,7 @@ public class EnemySight : MonoBehaviour
 	public bool playerInSight;                      // Whether or not the player is currently sighted.
 	public Vector3 personalLastSighting;            // Last place this enemy spotted the player.
 	
-	
+
 	private NavMeshAgent nav;                       // Reference to the NavMeshAgent component.
 	private SphereCollider col;                     // Reference to the sphere collider trigger component.
 	private Animator anim;                          // Reference to the Animator.
@@ -39,6 +39,7 @@ public class EnemySight : MonoBehaviour
 	
 	void Update ()
 	{
+
 		// If the last global sighting of the player has changed...
 		// Si el ultimo avistamiento global del jugador ha cambiado...
 		if(lastPlayerSighting.position != previousSighting)
@@ -60,6 +61,8 @@ public class EnemySight : MonoBehaviour
 			// ... set the animator parameter to false.
 			// ... Establezca el parametro del animator en falso.
 			anim.SetBool(hash.playerInSightBool, false);
+
+
 	}
 	
 	
@@ -85,7 +88,7 @@ public class EnemySight : MonoBehaviour
 				RaycastHit hit;
 				
 				// ... and if a raycast towards the player hits something...
-				//... y si el rayo hacia el jugador golpea alguna cosa...
+				//... y si el rayo hacia el jugador golpea alguna cosa...(se le suma tran.up porque la raiz esta en los pies y asi queda en la mitad
 				if(Physics.Raycast(transform.position + transform.up, direction.normalized, out hit, col.radius))
 				{
 					// ... and if the raycast hits the player...
@@ -110,13 +113,21 @@ public class EnemySight : MonoBehaviour
 			
 			// If the player is running or is attracting attention...
 			//si el jugador esta corriendo o esta atrayendo la atencion...//Se compara el hasid actual que se esta ejecutando con el que deseo consultar.
-			if(playerLayerZeroStateHash == hash.locomotionState || playerLayerOneStateHash == hash.shoutState)
+			if(playerLayerZeroStateHash == hash.locomotionState /*|| playerLayerOneStateHash == hash.shoutState*/)
 			{
 				// ... and if the player is within hearing range...
 				//... si el jugador esta dentro del rango de escucha...
-				if(CalculatePathLength(player.transform.position) <= col.radius)
+				if(CalculatePathLength(player.transform.position) <= col.radius/2)//Le añadi /2 para reducir el rango de escucha de pasos
 					// ... set the last personal sighting of the player to the player's current position.
 					//... establezca el ultimo avistamiento personal del jugador en la posicion actual del jugador.
+					personalLastSighting = player.transform.position;
+			}
+			//nuevo codigo, separe el grito para poder llamar la atencion de manera adecuada
+			if(playerLayerOneStateHash == hash.shoutState)
+			{
+				//... si el jugador esta dentro del rango de escucha...
+				if(CalculatePathLength(player.transform.position) <= col.radius)//porque el tamaño de ruta no puede ser mas grande que el radio del sphere collider (esto permite estar en un salon cerrado y cercano y no ser escuchado)
+				//... establezca el ultimo avistamiento personal del jugador en la posicion donde grito el jugador.
 					personalLastSighting = player.transform.position;
 			}
 		}
@@ -158,18 +169,18 @@ public class EnemySight : MonoBehaviour
 		// Los puntos intermedios son las esquinas de la ruta
 		for(int i = 0; i < path.corners.Length; i++)
 		{
-			allWayPoints[i + 1] = path.corners[i];
+			allWayPoints[i + 1] = path.corners[i];//asigna las esquinas
 		}
 		
 		// Create a float to store the path length that is by default 0.
 		// cree un flotante para almacenar la longitud de la ruta que es por defecto cero.
-		float pathLength = 0;
+		float pathLength = 0;//no se puede incrementar sino ha sido inicializado
 		
 		// Increment the path length by an amount equal to the distance between each waypoint and the next.
 		// Incremente la longitud de la ruta en una cantidad igual a la distancia entre cada punto de paso y el siguiente.
 		for(int i = 0; i < allWayPoints.Length - 1; i++)
 		{
-			pathLength += Vector3.Distance(allWayPoints[i], allWayPoints[i + 1]);
+			pathLength += Vector3.Distance(allWayPoints[i], allWayPoints[i + 1]);//asigna la distancia entre cada esquina
 		}
 		
 		return pathLength;

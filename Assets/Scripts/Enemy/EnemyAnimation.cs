@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class EnemyAnimation : MonoBehaviour 
@@ -50,12 +50,12 @@ public class EnemyAnimation : MonoBehaviour
 		NavAnimSetup();
 	}
 	
-	
-	void OnAnimatorMove ()
+	//esto deshabilita la opcion del animator de root motion en el inspector diciendo que sera manejado por script 
+	void OnAnimatorMove ()//es llamado despues de cada updete frame
 	{
 		// Set the NavMeshAgent's velocity to the change in position since the last frame, by the time it took for the last frame.
-		// Establece la velocidad del NavMeshAgent's para el cambio de posicion desde el ultimo cuadro, por el tiempo que tomo de el ultimo frame.
-		nav.velocity = anim.deltaPosition / Time.deltaTime;//es un cambio de posicion por frame
+		// Establece la velocidad del NavMeshAgent's para el cambio en posicion desde el ultimo cuadro, por el tiempo que tomo para el ultimo frame.
+		nav.velocity = anim.deltaPosition / Time.deltaTime;//Establecemos la velocidad del agente a la posicion delta de la animacion divido por delta time. es un cambio de posicion por frame
 		
 		// The gameobject's rotation is driven by the animation's rotation.
 		// La rotacion del gameobject es manejada por la rotacion de la animacion.

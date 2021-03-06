@@ -42885,6 +42885,7 @@ MonoBehaviour:
   fieldOfViewAngle: 110
   playerInSight: 0
   personalLastSighting: {x: 0, y: 0, z: 0}
+  con: 0
 --- !u!114 &1083784520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42910,8 +42911,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 999112a18371a8d43852566dd9d3767f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maximumDamage: 120
-  minimumDamage: 45
+  maximumDamage: 50
+  minimumDamage: 25
   shotClip: {fileID: 8300000, guid: 0af3d513283ae634480aa98a0d2da839, type: 3}
   flashIntensity: 3
   fadeSpeed: 10
@@ -46538,6 +46539,7 @@ MonoBehaviour:
   fieldOfViewAngle: 110
   playerInSight: 0
   personalLastSighting: {x: 0, y: 0, z: 0}
+  con: 0
 --- !u!195 &1242349530
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -51343,6 +51345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smooth: 1.5
+  zoomAdicional: 3
 --- !u!124 &1407190658
 Behaviour:
   m_ObjectHideFlags: 0
@@ -69073,6 +69076,42 @@ Prefab:
       propertyPath: patrolWayPoints.Array.data[3]
       value: 
       objectReference: {fileID: 301964248}
+    - target: {fileID: 13543630, guid: efb268f7236ea4b449cb42fa3c7a694c, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11443630, guid: efb268f7236ea4b449cb42fa3c7a694c, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11443634, guid: efb268f7236ea4b449cb42fa3c7a694c, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11443636, guid: efb268f7236ea4b449cb42fa3c7a694c, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11443632, guid: efb268f7236ea4b449cb42fa3c7a694c, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 10843630, guid: efb268f7236ea4b449cb42fa3c7a694c, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 12043630, guid: efb268f7236ea4b449cb42fa3c7a694c, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11443634, guid: efb268f7236ea4b449cb42fa3c7a694c, type: 2}
+      propertyPath: maximumDamage
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 11443634, guid: efb268f7236ea4b449cb42fa3c7a694c, type: 2}
+      propertyPath: minimumDamage
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: efb268f7236ea4b449cb42fa3c7a694c, type: 2}
   m_RootGameObject: {fileID: 1083784513}
@@ -70891,6 +70930,7 @@ MonoBehaviour:
   fieldOfViewAngle: 110
   playerInSight: 0
   personalLastSighting: {x: 0, y: 0, z: 0}
+  con: 0
 --- !u!195 &2087282131
 NavMeshAgent:
   m_ObjectHideFlags: 0
